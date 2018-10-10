@@ -1,25 +1,78 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap-fluid-adj.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet">
     <title>Tensor Studios</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
 <body>
-    <div class="page-header">
-        <h1><a href="/">Tensor Studios Blog</a></h1>
-    </div>
 
-    <div class="content container">
-        <div class="row">
-            <div class="col-md-8">
-                {% block content %}
-                {% endblock %}
-            </div>
-        </div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+       <div class="navbar-inner">
+           <div class="container">
+               <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+               </button>
+               <a class="brand" href="/blog/">Tensor Studios</a>
+
+               <div class="nav-collapse collapse">
+                   <ul class="nav pull-right">
+                       {% if user.is_authenticated %}
+                        <li class="navbar-text">Welcome, {{ user.username }}!</li>
+                        <li><a href="/blog/logout/">Logout</a></li>
+                       {% else %}
+                        <li><a href="/blog/register/">Register</a></li>
+                        <li><a href="/blog/login/">Login</a></li>
+                       {% endif %}
+                   </ul>
+                   <ul class="nav">
+                       {% if user.is_authenticated %}
+                        <li><a href="/blog/restricted/">Restricted</a></li>
+                        <li><a href="/blog/add_category/">Add Category</a></li>
+                       {% endif %}
+                       <li><a href="/blog/about/">About</a></li>
+                   </ul>
+               </div>
+               <!--/.nav-collapse -->
+           </div>
+       </div>
 </div>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="well sidebar-nav">
+                <!--- Empty for the timebeing -->
+            </div>
+            <!--/.well -->
+        </div>
+        <!--/span-->
+        <div class="span9">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <!--/span-->
+    </div>
+    <!--/row-->
+</div>
+<!--/.fluid-container-->
+
+<hr>
+
+<footer>
+    <div class="container">
+        <p>&copy; Rango: How to Tango with Django 2013</p>
+    </div>
+</footer>
+
+
+<script src="{% static 'js/jquery-2.0.3.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
 </html>
