@@ -25,7 +25,7 @@
                    <ul class="nav pull-right">
                        {% if user.is_authenticated %}
                         <li class="navbar-text">Welcome, {{ user.username }}!</li>
-                        <li><a href="/blog/logout/">Logout</a></li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
                        {% else %}
                         <li><a href="/blog/register/">Register</a></li>
                         <li><a href="{% url 'login' %}">Login</a></li>
