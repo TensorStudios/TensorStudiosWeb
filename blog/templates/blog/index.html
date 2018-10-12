@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="hero-unit">
+    <h1>Welcome to Tensor Studios</h1>
+    <p>Find information about our studio and development projects here.</p>
+</div>
+
+<div class="row-fluid">
+    <div class="span6">
+        <h2>Current Projects</h2>
+        {% if categories %}
+        <ul>
+            {% for category in categories %}
+            <li><a href="/rango/category/{{ category.url }}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <strong>No categories at present.</strong>
+        {% endif %}
+
+    </div>
+    <!--/span-->
+    <div class="span6">
+        <h2>Recent Blog Entries</h2>
+        {% if pages %}
+        <ul>
+            {% for page in pages %}
+            <li><a href="{{ page.url}}">{{ page.title }}</a> - {{ page.category }} ({{ page.views }} view(s))</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <strong>No pages at present.</strong>
+        {% endif %}
+
+    </div>
+    <!--/span-->
+</div>
+<!--/row-->
+{% endblock %}
