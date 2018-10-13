@@ -3,11 +3,13 @@ from django.utils import timezone
 from django.contrib.auth import authenticate, login
 from django.template import RequestContext, Template
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Post
+from .models import Post, Project
 
 
 def index(request):
-    return render(request, 'blog/index.html')
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    projects = Project.objects.all()
+    return render(request, 'blog/index.html', {'posts': posts, 'projects': projects})
 
 
 def post_list(request):
@@ -59,3 +61,7 @@ def user_login(request):
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
         return render_to_response('blog/login.html', {}, context)
+
+
+def about(request):
+    return render(request, 'blog/about.html/')

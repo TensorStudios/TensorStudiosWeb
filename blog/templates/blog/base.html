@@ -27,16 +27,16 @@
                         <li class="navbar-text">Welcome, {{ user.username }}!</li>
                         <li><a href="{% url 'logout' %}">Logout</a></li>
                        {% else %}
-                        <li><a href="/blog/register/">Register</a></li>
+{#                        <li><a href="/blog/register/">Register</a></li>#}
                         <li><a href="{% url 'login' %}">Login</a></li>
                        {% endif %}
                    </ul>
                    <ul class="nav">
                        {% if user.is_authenticated %}
-                        <li><a href="/blog/restricted/">Restricted</a></li>
-                        <li><a href="/blog/add_category/">Add Category</a></li>
+{#                        <li><a href="/blog/restricted/">Restricted</a></li>#}
+{#                        <li><a href="/blog/add_category/">Add Category</a></li>#}
                        {% endif %}
-                       <li><a href="/blog/about/">About</a></li>
+                       <li><a href="/about/">About</a></li>
                    </ul>
                </div>
                <!--/.nav-collapse -->
@@ -48,7 +48,12 @@
     <div class="row-fluid">
         <div class="span3">
             <div class="well sidebar-nav">
-                <!--- Empty for the timebeing -->
+                <h2>Team Members</h2>
+                <ul>
+                    <li>Jonathan Layman</li>
+                    <li>Andrew Albright</li>
+                    <li>Devin Emnett</li>
+                </ul>
             </div>
             <!--/.well -->
         </div>
