@@ -22,6 +22,17 @@ def post_detail(request, pk):
     return render(request, 'blog/post_detail.html', {'post': post})
 
 
+def project_list(request):
+    projects = Project.objects.all()
+    return render(request, 'blog/project_list.html', {'projects': projects})
+
+
+def project_detail(request, pk):
+    _project = get_object_or_404(Project, pk=pk)
+    blogs = Post.objects.filter(project=_project)
+    return render(request, 'blog/project_detail.html', {'project': _project, 'blogs': blogs})
+
+
 def user_login(request):
     # Like before, obtain the context for the user's request.
     context = RequestContext(request)

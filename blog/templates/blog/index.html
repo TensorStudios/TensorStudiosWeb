@@ -12,7 +12,7 @@
         {% if projects %}
         <ul>
             {% for project in projects %}
-            <li><a href="/blog/project/{{ project.pk }}">{{ project.name }}</a></li>
+            <li><a href="/project/{{ project.pk }}">{{ project.name }}</a></li>
             {% endfor %}
         </ul>
         {% else %}

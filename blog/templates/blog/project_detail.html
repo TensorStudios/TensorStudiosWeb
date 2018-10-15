@@ -1,0 +1,43 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="hero-unit">
+        <h1>{{ project.name }}</h1>
+    </div>
+
+    <div class="row-fluid">
+        {% if project.name %}
+        <div class="span2">
+            <h2>Description</h2>
+            <p>{{ project.description }}</p>
+        </div>
+        {% endif %}
+
+        {% if project.patch_notes %}
+        <div class="span2">
+            <h2>Patch Notes</h2>
+            <p>{{ project.patch_notes }}</p>
+        </div>
+        {% endif %}
+
+        {% if project.known_issues %}
+        <div class="span2">
+            <h2>Known Issues</h2>
+            <p>{{ project.known_issues }}</p>
+        </div>
+        {% endif %}
+
+        {% if blogs %}
+        <div class="span2">
+            <h2>Blogs</h2>
+            {% for blog in blogs %}
+            <ul>
+                <li>{{ blog.title }}</li>
+            </ul>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+
+    </div>
+{% endblock %}

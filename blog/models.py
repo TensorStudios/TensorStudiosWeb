@@ -24,7 +24,9 @@ class Post(models.Model):
 
 class Project(models.Model):
     name = models.CharField(max_length=200)
-    description = models.TextField()
+    description = models.TextField(blank=True, default="")
+    patch_notes = models.TextField(blank=True, default="")
+    known_issues = models.TextField(blank=True, default="")
     version = models.CharField(max_length=20)
 
     def create(self):
